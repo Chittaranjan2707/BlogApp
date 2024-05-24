@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: blogs-frontend-service
+spec:
+  ports:
+  - port: 3000
+  selector:
+    app: blogs-frontend
+  type: LoadBalancer
+

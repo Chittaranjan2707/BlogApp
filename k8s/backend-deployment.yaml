@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blogs-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: blogs-backend
+  template:
+    metadata:
+      labels:
+        app: blogs-backend
+    spec:
+      containers:
+      - name: blogs-backend
+        image: chittaranjan27/back-app:latest
+        env:
+        - name: SPRING_DATASOURCE_URL
+          value: jdbc:mysql://mysql-service:3306/BlogApp
+        - name: SPRING_DATASOURCE_USERNAME
+          value: root
+        - name: SPRING_DATASOURCE_PASSWORD
+          value: Password@12345
+        ports:
+        - containerPort: 9090
+

@@ -1,0 +1,16 @@
+---
+- hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Deploy Backend Deployment
+      community.kubernetes.k8s:
+        kubeconfig: "{{ kubeconfig_path }}"
+        state: present
+        src: "/var/lib/jenkins/workspace/BlogApp/k8s/backend-deployment.yml"
+
+    - name: Deploy Backend Service
+      community.kubernetes.k8s:
+        kubeconfig: "{{ kubeconfig_path }}"
+        state: present
+        src: "/var/lib/jenkins/workspace/BlogApp/k8s/backend-service.yml"
+
